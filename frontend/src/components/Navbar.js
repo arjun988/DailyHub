@@ -67,13 +67,16 @@ const Navbar = ({ onToggleTheme, isDark }) => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden absolute w-full bg-white dark:bg-gray-900 shadow-lg animate-slideDown">
-          <div className="container mx-auto px-4 py-4 space-y-4">
+          <div className="container mx-auto px-4 py-4 flex justify-center">
             <button
               onClick={onToggleTheme}
-              className="flex items-center space-x-2 w-full px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
             >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              <span>{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+              {isDark ? (
+                <Sun className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+              ) : (
+                <Moon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+              )}
             </button>
           </div>
         </div>
