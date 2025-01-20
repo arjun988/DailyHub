@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 const Navbar = ({ onToggleTheme, isDark }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -36,8 +35,8 @@ const Navbar = ({ onToggleTheme, isDark }) => {
             </h1>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Theme Toggle Button */}
+          <div className="flex items-center space-x-8">
             <button
               onClick={onToggleTheme}
               className="relative group p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
@@ -49,38 +48,8 @@ const Navbar = ({ onToggleTheme, isDark }) => {
               )}
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-            )}
-          </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute w-full bg-white dark:bg-gray-900 shadow-lg animate-slideDown">
-          <div className="container mx-auto px-4 py-4 flex justify-center">
-            <button
-              onClick={onToggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
-            >
-              {isDark ? (
-                <Sun className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-              ) : (
-                <Moon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-              )}
-            </button>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
